@@ -183,6 +183,7 @@
                 img.setAttribute('crossOrigin', 'anonymous');
             }
             img.onerror = function(reason) {
+                debugger;
                 reject('Croppie image load failure: ' + reason);
             }
             img.onload = function () {
