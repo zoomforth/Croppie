@@ -165,7 +165,7 @@
         var img = imageEl || new Image();
         img.style.opacity = 0;
 
-        return new Promise(function (resolve) {
+        return new Promise(function (resolve, reject) {
             function _resolve() {
                 setTimeout(function(){
                     resolve(img);
@@ -181,6 +181,9 @@
             img.removeAttribute('crossOrigin');
             if (src.match(/^https?:\/\/|^\/\//)) {
                 img.setAttribute('crossOrigin', 'anonymous');
+            }
+            img.onerror = function() {
+                reject('Croppie image load failure');
             }
             img.onload = function () {
                 if (doExif) {
@@ -1270,6 +1273,11 @@
         self.data.boundZoom = zoom;
 
         return loadImage(url, self.elements.img, hasExif).then(function (img) {
+
+            if (!self.elements) {
+                throw new Error('Croppie removed from DOM before image loaded');
+            }
+
             if (!points.length) {
                 var natDim = naturalImageDimensions(img);
                 var rect = self.elements.viewport.getBoundingClientRect();

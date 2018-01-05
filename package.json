@@ -1,6 +1,6 @@
 {
   "name": "croppie",
-  "version": "2.5.1",
+  "version": "2.5.1-zoomforth-0.1",
   "description": "A simple javascript image cropper",
   "main": "croppie.js",
   "devDependencies": {
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Foliotek/Croppie.git"
+    "url": "git+https://github.com/zoomforth/Croppie.git"
   },
   "keywords": [
     "crop",
